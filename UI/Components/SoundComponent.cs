@@ -76,7 +76,9 @@ namespace LiveSplit.UI.Components
         {
             if (State.CurrentPhase == TimerPhase.Ended)
             {
-                if (State.Run.Last().PersonalBestSplitTime[State.CurrentTimingMethod] == null || State.Run.Last().SplitTime[State.CurrentTimingMethod] < State.Run.Last().PersonalBestSplitTime[State.CurrentTimingMethod])
+                if (State.Run.Metadata.WorldRecordTime != null && State.Run.Last().SplitTime[State.CurrentTimingMethod] < State.Run.Metadata.WorldRecordTime)
+                    PlaySound(Settings.WorldRecord, Settings.WorldRecordVolume);
+                else if (State.Run.Last().PersonalBestSplitTime[State.CurrentTimingMethod] == null || State.Run.Last().SplitTime[State.CurrentTimingMethod] < State.Run.Last().PersonalBestSplitTime[State.CurrentTimingMethod])
                     PlaySound(Settings.PersonalBest, Settings.PersonalBestVolume);
                 else
                     PlaySound(Settings.NotAPersonalBest, Settings.NotAPersonalBestVolume);

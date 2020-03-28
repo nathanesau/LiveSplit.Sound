@@ -15,6 +15,8 @@ namespace LiveSplit.UI.Components
         public string BestSegment { get; set; }
         public string UndoSplit { get; set; }
         public string SkipSplit { get; set; }
+
+        public string WorldRecord { get; set; }
         public string PersonalBest { get; set; }
         public string NotAPersonalBest { get; set; }
         public string Reset { get; set; }
@@ -33,6 +35,8 @@ namespace LiveSplit.UI.Components
         public int BestSegmentVolume { get; set; }
         public int UndoSplitVolume { get; set; }
         public int SkipSplitVolume { get; set; }
+
+        public int WorldRecordVolume { get; set; }
         public int PersonalBestVolume { get; set; }
         public int NotAPersonalBestVolume { get; set; }
         public int ResetVolume { get; set; }
@@ -52,6 +56,7 @@ namespace LiveSplit.UI.Components
             BestSegment =
             UndoSplit =
             SkipSplit =
+            WorldRecord =
             PersonalBest =
             NotAPersonalBest =
             Reset =
@@ -70,6 +75,7 @@ namespace LiveSplit.UI.Components
             BestSegmentVolume =
             UndoSplitVolume =
             SkipSplitVolume =
+            WorldRecordVolume = 
             PersonalBestVolume =
             NotAPersonalBestVolume =
             ResetVolume =
@@ -88,6 +94,7 @@ namespace LiveSplit.UI.Components
             txtBestSegment.DataBindings.Add("Text", this, "BestSegment");
             txtUndo.DataBindings.Add("Text", this, "UndoSplit");
             txtSkip.DataBindings.Add("Text", this, "SkipSplit");
+            txtWorldRecord.DataBindings.Add("Text", this, "WorldRecord");
             txtPersonalBest.DataBindings.Add("Text", this, "PersonalBest");
             txtNotAPersonalBest.DataBindings.Add("Text", this, "NotAPersonalBest");
             txtReset.DataBindings.Add("Text", this, "Reset");
@@ -106,6 +113,7 @@ namespace LiveSplit.UI.Components
             tbBestSegmentVolume.DataBindings.Add("Value", this, "BestSegmentVolume");
             tbUndoVolume.DataBindings.Add("Value", this, "UndoSplitVolume");
             tbSkipVolume.DataBindings.Add("Value", this, "SkipSplitVolume");
+            tbWorldRecordVolume.DataBindings.Add("Value", this, "WorldRecordVolume");
             tbPersonalBestVolume.DataBindings.Add("Value", this, "PersonalBestVolume");
             tbNotAPersonalBestVolume.DataBindings.Add("Value", this, "NotAPersonalBestVolume");
             tbResetVolume.DataBindings.Add("Value", this, "ResetVolume");
@@ -126,6 +134,7 @@ namespace LiveSplit.UI.Components
             BestSegment = SettingsHelper.ParseString(element["BestSegment"]);
             UndoSplit = SettingsHelper.ParseString(element["UndoSplit"]);
             SkipSplit = SettingsHelper.ParseString(element["SkipSplit"]);
+            WorldRecord = SettingsHelper.ParseString(element["WorldRecord"]);
             PersonalBest = SettingsHelper.ParseString(element["PersonalBest"]);
             NotAPersonalBest = SettingsHelper.ParseString(element["NotAPersonalBest"]);
             Reset = SettingsHelper.ParseString(element["Reset"]);
@@ -143,6 +152,7 @@ namespace LiveSplit.UI.Components
             BestSegmentVolume = SettingsHelper.ParseInt(element["BestSegmentVolume"], 100);
             UndoSplitVolume = SettingsHelper.ParseInt(element["UndoSplitVolume"], 100);
             SkipSplitVolume = SettingsHelper.ParseInt(element["SkipSplitVolume"], 100);
+            WorldRecordVolume = SettingsHelper.ParseInt(element["WorldRecordVolume"], 100);
             PersonalBestVolume = SettingsHelper.ParseInt(element["PersonalBestVolume"], 100);
             NotAPersonalBestVolume = SettingsHelper.ParseInt(element["NotAPersonalBestVolume"], 100);
             ResetVolume = SettingsHelper.ParseInt(element["ResetVolume"], 100);
@@ -175,6 +185,7 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "BestSegment", BestSegment) ^
             SettingsHelper.CreateSetting(document, parent, "UndoSplit", UndoSplit) ^
             SettingsHelper.CreateSetting(document, parent, "SkipSplit", SkipSplit) ^
+            SettingsHelper.CreateSetting(document, parent, "WorldRecord", WorldRecord) ^
             SettingsHelper.CreateSetting(document, parent, "PersonalBest", PersonalBest) ^
             SettingsHelper.CreateSetting(document, parent, "NotAPersonalBest", NotAPersonalBest) ^
             SettingsHelper.CreateSetting(document, parent, "Reset", Reset) ^
@@ -190,6 +201,7 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "BestSegmentVolume", BestSegmentVolume) ^
             SettingsHelper.CreateSetting(document, parent, "UndoSplitVolume", UndoSplitVolume) ^
             SettingsHelper.CreateSetting(document, parent, "SkipSplitVolume", SkipSplitVolume) ^
+            SettingsHelper.CreateSetting(document, parent, "WorldRecordVolume", WorldRecordVolume) ^
             SettingsHelper.CreateSetting(document, parent, "PersonalBestVolume", PersonalBestVolume) ^
             SettingsHelper.CreateSetting(document, parent, "NotAPersonalBestVolume", NotAPersonalBestVolume) ^
             SettingsHelper.CreateSetting(document, parent, "ResetVolume", ResetVolume) ^
@@ -257,6 +269,11 @@ namespace LiveSplit.UI.Components
         private void btnSkipSplit_Click(object sender, EventArgs e)
         {
             BrowseForPath(txtSkip, (x) => SkipSplit = x);
+        }
+
+        private void btnWorldRecord_Click(object sender, EventArgs e)
+        {
+            BrowseForPath(txtWorldRecord, (x) => WorldRecord = x);
         }
 
         private void btnPersonalBest_Click(object sender, EventArgs e)
